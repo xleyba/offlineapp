@@ -40,6 +40,7 @@ public class OfflineappApplication  {
 			containerFactory="paymentKafkaListenerContainerFactory")
 	void listener(Payment payment) {
 		log.info("Listener [{}]", payment.toString());
+		paymentService.insert(payment);
 	}
 
 	/**

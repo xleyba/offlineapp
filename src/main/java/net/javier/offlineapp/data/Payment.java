@@ -2,9 +2,12 @@ package net.javier.offlineapp.data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import java.util.Date;
+import java.sql.Timestamp;
 
 @Entity
+@Table(name = "payments")
 public class Payment {
 
     @Id
@@ -13,7 +16,7 @@ public class Payment {
     private String payment_type;    // text possible values are “online” and “offline”
     private String credit_card;     // string with some payment informaঞon
     private int amount;             // integer with price amount.
-    private Date created_at;        // timestamp with creaঞon date. only in database
+    private Timestamp created_on;   // timestamp with creaঞon date. only in database
 
     public Payment() {}
 
@@ -30,11 +33,14 @@ public class Payment {
     }
 
     public Payment(String payment_id, int account_id, String payment_type, String credit_card, int amount) {
+        Date date= new Date();
+
         this.payment_id = payment_id;
         this.account_id = account_id;
         this.payment_type = payment_type;
         this.credit_card = credit_card;
         this.amount = amount;
+        this.created_on = new Timestamp(date.getTime());
     }
 
     public int getAccount_id() {
@@ -69,12 +75,12 @@ public class Payment {
         this.amount = amount;
     }
 
-    public Date getCreated_at() {
-        return created_at;
+    public Timestamp getCreated_on() {
+        return created_on;
     }
 
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
+    public void setCreated_at(Timestamp created_on) {
+        this.created_on = created_on;
     }
 
     @Override
