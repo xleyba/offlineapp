@@ -1,14 +1,19 @@
 package net.javier.offlineapp;
 
+import net.javier.offlineapp.data.Payment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
+import org.springframework.context.annotation.Bean;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @SpringBootApplication
-public class OfflineappApplication implements CommandLineRunner {
+public class OfflineappApplication  {
 
 	private static final Logger log = LoggerFactory.getLogger(OfflineappApplication.class);
 
@@ -22,7 +27,7 @@ public class OfflineappApplication implements CommandLineRunner {
 	}
 
 
-	@Override
+	/**@Override
 	public void run(String... args) {
 
 		log.info("StartApplication...");
@@ -31,6 +36,6 @@ public class OfflineappApplication implements CommandLineRunner {
 		System.out.println("\nfindAll()");
 		repository.findAll().forEach(x -> System.out.println(x));
 
-	}
+	}*/
 
 }

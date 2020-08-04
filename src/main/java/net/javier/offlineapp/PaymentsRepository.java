@@ -11,4 +11,6 @@ public interface PaymentsRepository extends CrudRepository<Payment, String> {
 
     List<Payment> findAll();
 
+    Payment save(Payment p);
+
 }
