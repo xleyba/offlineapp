@@ -20,7 +20,7 @@ public class OfflineappApplication {
 
 	}
 
-
+/*
 	@Override
 	public void run(String... args) {
 
@@ -29,6 +29,9 @@ public class OfflineappApplication {
 
 		System.out.println("\nfindAll()");
 		repository.findAll().forEach(x -> System.out.println(x));
-		
+
 	}
+
+ */
+
 }
