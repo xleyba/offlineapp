@@ -1,6 +1,6 @@
 package net.javier.offlineapp;
 
-import data.Payment;
+import net.javier.offlineapp.data.Payment;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,4 +1,4 @@
-package data;
+package net.javier.offlineapp.data;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -21,20 +21,20 @@ public class Payment {
         this.payment_id = payment_id;
     }
 
-    public Payment(String payment_id, int account_id, String payment_type, String credit_card, int amount) {
-        this.payment_id = payment_id;
-        this.account_id = account_id;
-        this.payment_type = payment_type;
-        this.credit_card = credit_card;
-        this.amount = amount;
-    }
-
     public String getPayment_id() {
         return payment_id;
     }
 
     public void setPayment_id(String payment_id) {
         this.payment_id = payment_id;
+    }
+
+    public Payment(String payment_id, int account_id, String payment_type, String credit_card, int amount) {
+        this.payment_id = payment_id;
+        this.account_id = account_id;
+        this.payment_type = payment_type;
+        this.credit_card = credit_card;
+        this.amount = amount;
     }
 
     public int getAccount_id() {
