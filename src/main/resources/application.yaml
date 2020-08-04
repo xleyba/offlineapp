@@ -1,7 +1,7 @@
 spring:
   datasource:
     hikari:
-      connection-timeout: 20000
+      #connection-timeout: 20000
       #maximumPoolSize: 5
     ## PostgreSQL
     url: jdbc:postgresql://localhost:5432/payments
