@@ -34,19 +34,28 @@ public class OfflineappApplication  {
 
 	}
 
+	@KafkaListener(
+			topics = "offline",
+			groupId="mygroup",
+			containerFactory="paymentKafkaListenerContainerFactory")
+	void listener(Payment payment) {
+		log.info("Listener [{}]", payment.toString());
+	}
+
+	/**
 	@KafkaListener(topics = "offline", groupId = "${message.group.name:mygroup}")
 	public void listen(@Payload Payment data,
 					   @Headers MessageHeaders headers) {
 		log.info("received data='{}'", data.toString());
 		paymentService.insert(data);
 
-		/* headers.keySet().forEach(key -> {
+		headers.keySet().forEach(key -> {
 			LOG.info("{}: {}", key, headers.get(key));
-		}); */
+		});
 	}
 
 
-	/**@Override
+	@Override
 	public void run(String... args) {
 
 		log.info("StartApplication...");
