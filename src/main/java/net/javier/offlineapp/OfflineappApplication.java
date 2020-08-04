@@ -1,6 +1,7 @@
 package net.javier.offlineapp;
 
 import net.javier.offlineapp.data.Payment;
+import net.javier.offlineapp.service.PaymentService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.messaging.MessageHeaders;
+import org.springframework.messaging.handler.annotation.Headers;
+import org.springframework.messaging.handler.annotation.Payload;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,10 +25,24 @@ public class OfflineappApplication  {
 	@Autowired
 	private PaymentsRepository repository;
 
+	@Autowired
+	private PaymentService paymentService;
+
 	public static void main(String[] args) {
 
 		SpringApplication.run(OfflineappApplication.class, args);
 
+	}
+
+	@KafkaListener(topics = "offline", groupId = "${message.group.name:mygroup}")
+	public void listen(@Payload Payment data,
+					   @Headers MessageHeaders headers) {
+		log.info("received data='{}'", data.toString());
+		paymentService.insert(data);
+
+		/* headers.keySet().forEach(key -> {
+			LOG.info("{}: {}", key, headers.get(key));
+		}); */
 	}
 
 
