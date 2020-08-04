@@ -17,6 +17,10 @@ public class Payment {
 
     public Payment() {}
 
+    public Payment(String payment_id) {
+        this.payment_id = payment_id;
+    }
+
     public Payment(String payment_id, int account_id, String payment_type, String credit_card, int amount) {
         this.payment_id = payment_id;
         this.account_id = account_id;

@@ -5,9 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.CommandLineRunner;
 
 @SpringBootApplication
-public class OfflineappApplication {
+public class OfflineappApplication implements CommandLineRunner {
 
 	private static final Logger log = LoggerFactory.getLogger(OfflineappApplication.class);
 
@@ -20,7 +21,7 @@ public class OfflineappApplication {
 
 	}
 
-/*
+
 	@Override
 	public void run(String... args) {
 
@@ -31,7 +32,5 @@ public class OfflineappApplication {
 		repository.findAll().forEach(x -> System.out.println(x));
 
 	}
-
- */
 
 }
